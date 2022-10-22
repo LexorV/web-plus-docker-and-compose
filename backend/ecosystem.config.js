@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'test13',
+      name: 'kupiprodai-backend',
       script: './dist/main.js',
     },
   ],

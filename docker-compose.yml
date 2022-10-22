@@ -5,11 +5,10 @@ services:
     container_name: "postgres"
     ports:
       - "5432:5432"
-    environment:
-     POSTGRES_USER: "student"
-     POSTGRES_PASSWORD: "666777"
-     POSTGRES_DB: "kupipodariday"
-
+    env_file:
+      - ./backend/.env
+    volumes:
+      - data:/var/lib/postgresql/data
   backend:
      container_name: "backend-kupipodariday"
      build: "./backend"
@@ -17,7 +16,6 @@ services:
      - "4000:3000"
      depends_on: 
      - postgres
-
   frontend:
     container_name: "frontend-kupipodariday"
     build: "./frontend"
@@ -28,4 +26,5 @@ services:
     stdin_open: true
     depends_on: 
      - backend
-
+volumes:
+ data:

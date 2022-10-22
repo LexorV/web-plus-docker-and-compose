@@ -1,18 +1,20 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 export default () => ({
   port: parseInt(process.env.PORT) || 3000,
   database: {
     type: 'postgres',
-    host: process.env.DATABASE_HOST || 'host.docker.internal',
+    host: process.env.DATABASE_HOST || 'localhost',
     port: parseInt(process.env.DATABASE_PORT) || 5432,
-    username: 'student',
-    password: '666777',
-    databaseName: 'kupipodariday',
+    username: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    databaseName: process.env.POSTGRES_DB,
   },
-  jwtSecret: 'jwtSecret',
+  jwtSecret: process.env.JWT_SECRET,
   smtpConfig: {
-    host: 'smtp.yandex.ru',
+    host: process.env.SMTP_HOST,
     port: 465,
-    user: 'testservex@yandex.ru',
-    pass: '666777Asv',
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASSWORD,
   },
 });
