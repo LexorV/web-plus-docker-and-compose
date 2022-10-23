@@ -11,7 +11,8 @@ services:
       - data:/var/lib/postgresql/data
   backend:
      container_name: "backend-kupipodariday"
-     image: "lexv/web-plus-docker-and-compose-backend"
+     build: ./backend
+     #image: "lexv/web-plus-docker-and-compose-backend"
      env_file:
       - ./.env
      ports: 
@@ -20,7 +21,8 @@ services:
      - postgres
   frontend:
     container_name: "frontend-kupipodariday"
-    image: "lexv/web-plus-docker-and-compose-frontend"
+    build: ./frontend
+    #image: "lexv/web-plus-docker-and-compose-frontend"
     ports: 
     - "3010:80"
     tty: true
